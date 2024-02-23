@@ -3,6 +3,7 @@ const badRequestError = require("../../lib/badRequestError");
 const JwtService = require("../../services/JwtService");
 const bcrypt = require("bcrypt");
 const {REFERESS_SECRET} = require("../../config");
+const refressToken = require("../../models/Refress_Token");
 
 const login = async (req, res, next) => {
   try {
@@ -28,11 +29,22 @@ const login = async (req, res, next) => {
       username: student.username
     }, "1y", REFERESS_SECRET);
 
+    // stotre refress token in db
+    let dbrefressToken = await refressToken.findOne({username});
+
+    if(!dbrefressToken){
+      await refressToken.create({refress_token, username,});
+    }else{
+       await refressToken.updateOne({username,}, {refress_token});
+    }
+
+
+
     return res.status(200).json({
       success: true,
       data: {
        access_token,
-       refress_token,
+       refress_token
       }
     });
   } catch (err) {

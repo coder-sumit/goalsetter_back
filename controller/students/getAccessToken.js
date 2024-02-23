@@ -1,7 +1,5 @@
-const Student = require("../../models/Student");
 const badRequestError = require("../../lib/badRequestError");
 const JwtService = require("../../services/JwtService");
-const bcrypt = require("bcrypt");
 const { REFERESS_SECRET } = require("../../config");
 const refressToken = require("../../models/Refress_Token");
 

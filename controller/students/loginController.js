@@ -2,6 +2,7 @@ const Student = require("../../models/Student");
 const badRequestError = require("../../lib/badRequestError");
 const JwtService = require("../../services/JwtService");
 const bcrypt = require("bcrypt");
+const {REFERESS_SECRET} = require("../../config");
 
 const login = async (req, res, next) => {
   try {
@@ -21,10 +22,17 @@ const login = async (req, res, next) => {
         username: student.username
     });
 
+    // refress token
+    const refress_token = await JwtService.sign({
+      _id: student._id,
+      username: student.username
+    }, "1y", REFERESS_SECRET);
+
     return res.status(200).json({
       success: true,
       data: {
        access_token,
+       refress_token,
       }
     });
   } catch (err) {

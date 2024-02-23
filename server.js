@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const {APP_PORT} = require("./config");
 const db = require("./config/mongoose");
+const errorhandler = require("./middleware/errorHandler");
 
 const app = express();
 
@@ -12,9 +13,8 @@ app.use(express.json());
 app.use(cors());
 
 // Example route
-app.get('/', (req, res) => {
-  res.send('Hello, world!');
-});
+app.use('/api/v1', require("./routes"));
+app.use(errorhandler);
 
 // Start the server
 

@@ -5,5 +5,6 @@ const me = require("./meController");
 const getAccessToken = require("./getAccessToken");
 const checkTokenValidity = require("./checkTokenValidity");
 const editProfile = require("./editProfile");
+const changePassword = require("./changePassword");
 
-module.exports = {register, checkUsername, login, me, getAccessToken, checkTokenValidity, editProfile};
+module.exports = {register, checkUsername, login, me, getAccessToken, checkTokenValidity, editProfile, changePassword};

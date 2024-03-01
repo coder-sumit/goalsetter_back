@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Define the schema
-const studentSchema = new mongoose.Schema({
+const subjectSchema = new mongoose.Schema({
   subject_name: {
     type: String,
     required: true
@@ -10,10 +10,15 @@ const studentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Goal',
     required: true
+  },
+  student_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Student',
+    required: true
   }
 });
 
 // Create a model
-const Student = mongoose.model('Student', studentSchema);
+const Subject = mongoose.model('Subject', subjectSchema);
 
-module.exports = Student;
+module.exports = Subject;

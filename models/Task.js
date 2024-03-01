@@ -31,12 +31,15 @@ const taskSchema = new mongoose.Schema({
   },
   completed_hour: {
     type: Number,
-    default: 0
+    default: 0,
+    require: true
+
   },
   status: {
     type: String,
     enum: ['pending', 'working', 'completed'],
-    default: 'pending'
+    default: 'pending',
+    require: true
   }
 },{
   timestamps: true

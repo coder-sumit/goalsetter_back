@@ -6,5 +6,6 @@ const getAccessToken = require("./getAccessToken");
 const checkTokenValidity = require("./checkTokenValidity");
 const editProfile = require("./editProfile");
 const changePassword = require("./changePassword");
+const logout = require("./logOutController");
 
-module.exports = {register, checkUsername, login, me, getAccessToken, checkTokenValidity, editProfile, changePassword};
+module.exports = {register, checkUsername, login, me,logout, getAccessToken, checkTokenValidity, editProfile, changePassword};
